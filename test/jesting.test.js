@@ -18,7 +18,7 @@ async function runTests () {
 test('writes the testing files', async () => {
   let dir = tempy.directory()
   process.chdir(dir)
-  await execa(IGNITE, ['new', `${APP}`, '-b', 'ignite-kryptonite'])
+  await execa(IGNITE, ['new', `${APP}`, '-b', 'ignite-react-native-web'])
   process.chdir(APP)
   expect(jetpack.exists('package.json')).toEqual('file')
   expect(jetpack.exists('yarn.lock')).toEqual('file')

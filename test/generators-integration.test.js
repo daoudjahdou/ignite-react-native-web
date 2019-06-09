@@ -13,7 +13,7 @@ describe('generators', () => {
     // creates a new temp directory
     let dir = tempy.directory()
     process.chdir(dir)
-    await execa(IGNITE, ['new', `${APP}`, '-b', 'ignite-kryptonite'])
+    await execa(IGNITE, ['new', `${APP}`, '-b', 'ignite-react-native-web'])
     process.chdir(APP)
   })
 

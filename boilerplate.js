@@ -23,11 +23,11 @@ async function install (context) {
 
   const APP_PATH = process.cwd()
   const PLUGIN_PATH = __dirname
-  const name = parameters.third
+  const name = parameters.first
   const APP_TEMP_PATH = `${APP_PATH}/${name}`
 
   const spinner = print
-    .spin(`using the ${print.colors.cyan('Kryptonite')} boilerplate`)
+    .spin(`using the ${print.colors.cyan('react-native-web')} boilerplate`)
     .succeed()
 
   // install create react app
@@ -71,7 +71,7 @@ async function install (context) {
   try {
     // pass along the debug flag if we're running in that mode
     const debugFlag = parameters.options.debug ? '--debug' : ''
-    await system.spawn(`ignite add ignite-kryptonite ${debugFlag}`, { stdio: 'inherit' })
+    await system.spawn(`ignite add /Users/daoud/workspace/goodappe/ignite/ignite-react-native-web ${debugFlag}`, { stdio: 'inherit' })
   } catch (e) {
     ignite.log(e)
     throw e

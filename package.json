@@ -1,5 +1,5 @@
 {
-  "name": "ignite-kryptonite",
+  "name": "ignite-react-native-web",
   "description": "Cook up an ignite flavoured web project.",
   "version": "0.2.1",
   "license": "MIT",
@@ -31,7 +31,7 @@
     ]
   },
   "url": "https://example.com/path/to/your/plugin",
-  "repository": "juddey/ignite-kryptonite",
+  "repository": "juddey/ignite-react-native-web",
   "devDependencies": {
     "babel-eslint": "^7.1.1",
     "fs-jetpack": "^1.1.0",

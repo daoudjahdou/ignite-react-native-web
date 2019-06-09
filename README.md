@@ -1,4 +1,4 @@
-# Kryptonite
+# react-native-web
 
 Ignite for React-based Single Page Web Apps
 
@@ -17,7 +17,7 @@ Here are some instructions to get you started:
 
 - Install the ignite cli, if you haven't done so already - `npm install -g ignite-cli`
   - ProTip: That'll require you to install the `react-native-cli` too, but we'll be taking that away (hopefully soon!)
-- Run the following command - `ignite new MyAwesomeThing -b ignite-kryptonite`
+- Run the following command - `ignite new MyAwesomeThing -b ignite-react-native-web`
   - ProTip: the -b switch means "Use this boilerplate"
 - Thats it. Really.
 
@@ -32,15 +32,15 @@ Type ignite generate ________ to run one of these generators:
   component   Generates a component and styles.
   container   Generates a redux smart component.
   crudsaga    Generates a saga.
-  crudredux   Generates a action/creator/reducer set for Redux.        
-  saga        Generates a saga                
-  redux       Generates a action/creator/reducer set for Redux.        
-  screen      Generates a redux smart component.  
+  crudredux   Generates a action/creator/reducer set for Redux.
+  saga        Generates a saga
+  redux       Generates a action/creator/reducer set for Redux.
+  screen      Generates a redux smart component.
 ```
 
 ### Things you'll need to do yourself
-Yeah, you can't have everything :). 
- - When you do api calls for realsies, you'll need to hook up the saga index file [file](https://github.com/juddey/ignite-kryptonite/blob/master/boilerplate/src/Sagas/index.js)
+Yeah, you can't have everything :).
+ - When you do api calls for realsies, you'll need to hook up the saga index file [file](https://github.com/juddey/ignite-react-native-web/blob/master/boilerplate/src/Sagas/index.js)
 
 
 ### Tests
