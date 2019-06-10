@@ -65,14 +65,15 @@ async function install (context) {
 
   // copy our App & Tests directories
   spinner.text = '▸ installing boilerplate'
-  // spinner.start()
+  spinner.start()
 
   // have another go at installing the boilerplate, because CRA toasts it :bread:
   try {
     // pass along the debug flag if we're running in that mode
-    const debugFlag = parameters.options.debug ? '--debug' : ''
+    const debugFlag = parameters.options.debug ? '--debug' : '--debug'
     await system.spawn(`ignite add /Users/daoud/workspace/goodappe/ignite/ignite-react-native-web ${debugFlag}`, { stdio: 'inherit' })
   } catch (e) {
+    console.log(e)
     ignite.log(e)
     throw e
   }
@@ -134,9 +135,10 @@ async function install (context) {
 
   try {
     // pass along the debug flag if we're running in that mode
-    const debugFlag = parameters.options.debug ? '--debug' : ''
+    const debugFlag = parameters.options.debug ? '--debug' : '--debug'
     await system.spawn(`ignite add ${__dirname} ${debugFlag}`, { stdio: 'inherit' })
   } catch (e) {
+    console.log(e)
     ignite.log(e)
     throw e
   }
