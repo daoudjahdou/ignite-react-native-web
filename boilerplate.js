@@ -17,9 +17,9 @@ async function install(context) {
 
   const APP_PATH = process.cwd();
   const PLUGIN_PATH = __dirname;
-  console.log(__dirname)
-  const name = parameters.first;
-  const APP_TEMP_PATH = `${APP_PATH}/_${name}`;
+  console.log(APP_PATH)
+  const name = parameters.first+'app';
+  const APP_TEMP_PATH = `${APP_PATH}/${name}`;
 
   const spinner = print
     .spin(`using the ${print.colors.cyan("react-native-web")} boilerplate`)
