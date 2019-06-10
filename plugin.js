@@ -7,31 +7,26 @@ const NPM_MODULE_NAME = "react-native-MODULENAME";
 // const PLUGIN_PATH = __dirname
 // const APP_PATH = process.cwd()
 
-const add = {
-  description: "Generates a container and test, hooked up to redux.",
-  run: async function(context) {
-    // Learn more about context: https://infinitered.github.io/gluegun/#/context-api.md
-    // const { ignite, filesystem } = context
-    // install an NPM module and link it
-    // await ignite.addModule(NPM_MODULE_NAME, { link: true, version: NPM_MODULE_VERSION })
-    // Example of copying templates/Electrinite to App/Electrinite
-    // if (!filesystem.exists(`${APP_PATH}/App/Electrinite`)) {
-    //   filesystem.copy(`${PLUGIN_PATH}/templates/Electrinite`, `${APP_PATH}/App/Electrinite`)
-    // }
-    // Example of patching a file
-    // ignite.patchInFile(`${APP_PATH}/App/Config/AppConfig.js`, {
-    //   insert: `import '../Electrinite/Electrinite'\n`,
-    //   before: `export default {`
-    // })
-  }
+const add = async function(context) {
+  // Learn more about context: https://infinitered.github.io/gluegun/#/context-api.md
+  // const { ignite, filesystem } = context
+  // install an NPM module and link it
+  // await ignite.addModule(NPM_MODULE_NAME, { link: true, version: NPM_MODULE_VERSION })
+  // Example of copying templates/Electrinite to App/Electrinite
+  // if (!filesystem.exists(`${APP_PATH}/App/Electrinite`)) {
+  //   filesystem.copy(`${PLUGIN_PATH}/templates/Electrinite`, `${APP_PATH}/App/Electrinite`)
+  // }
+  // Example of patching a file
+  // ignite.patchInFile(`${APP_PATH}/App/Config/AppConfig.js`, {
+  //   insert: `import '../Electrinite/Electrinite'\n`,
+  //   before: `export default {`
+  // })
 };
 
 /**
  * Remove yourself from the project.
  */
-const remove = {
-  description: "Generates a container and test, hooked up to redux.",
-  run: async function(context) {
+const remove = async function(context) {
     // Learn more about context: https://infinitered.github.io/gluegun/#/context-api.md
     const { ignite } = context;
 
@@ -48,7 +43,6 @@ const remove = {
     // ignite.patchInFile(`${APP_PATH}/App/Config/AppConfig.js`, {
     //   delete: `import '../Electrinite/Electrinite'\n`
     // )
-  }
 };
 
 // Required in all Ignite CLI plugins
