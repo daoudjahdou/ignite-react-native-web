@@ -17,8 +17,9 @@ async function install(context) {
 
   const APP_PATH = process.cwd();
   const PLUGIN_PATH = __dirname;
+  console.log(__dirname)
   const name = parameters.first;
-  const APP_TEMP_PATH = `${APP_PATH}/${name}`;
+  const APP_TEMP_PATH = `${APP_PATH}/_${name}`;
 
   const spinner = print
     .spin(`using the ${print.colors.cyan("react-native-web")} boilerplate`)
@@ -36,7 +37,7 @@ async function install(context) {
   await system.run("node ./node_modules/create-react-app bob");
 
   // Next Step. Need to move everything from 'bob' into the project root.
-  filesystem.copy(`${APP_PATH}/bob`, `${APP_TEMP_PATH}/`, {
+  await filesystem.copy(`${APP_PATH}/bob`, `${APP_TEMP_PATH}/`, {
     matching: "**",
     overwrite: true
   });
@@ -97,35 +98,52 @@ async function install(context) {
   );
 
   // Remove the src directory CRA added
-  filesystem.remove(`${APP_TEMP_PATH}/src`);
+  spinner.text = "Remove the src directory CRA added";
+  spinner.start();
+  await filesystem.remove(`${APP_TEMP_PATH}/src`);
+  spinner.stop().succeed();
 
   // And substitute our own.
-  filesystem.copy(`${PLUGIN_PATH}/boilerplate/src`, `${APP_TEMP_PATH}/src`, {
+  spinner.text = "And substitute our own.";
+  spinner.start();
+  await filesystem.copy(`${PLUGIN_PATH}/boilerplate/src`, `${APP_TEMP_PATH}/src`, {
     overwrite: true
   });
+  spinner.stop().succeed();
 
-  filesystem.copy(
+  spinner.text = "storybook.";
+  spinner.start();
+  await filesystem.copy(
     `${PLUGIN_PATH}/boilerplate/.storybook`,
     `${APP_TEMP_PATH}/.storybook`,
     {
       overwrite: true
     }
   );
+  spinner.stop().succeed();
 
   // Add a README
-  filesystem.copy(
+  spinner.text = "Add a README";
+  spinner.start();
+  await filesystem.copy(
     `${PLUGIN_PATH}/boilerplate/README.md`,
     `${APP_TEMP_PATH}/README.md`,
     {
       overwrite: true
     }
   );
+  spinner.stop().succeed();
 
-  filesystem.copy(`${APP_PATH}/package.js`, `${APP_TEMP_PATH}/package.json`, {
+  spinner.text = "package";
+  spinner.start();
+  await filesystem.copy(`${APP_PATH}/package.js`, `${APP_TEMP_PATH}/package.json`, {
     overwrite: true
   });
+  spinner.stop().succeed();
 
-  filesystem.copy(
+  spinner.text = "package";
+  spinner.start();
+  await filesystem.copy(
     `${APP_PATH}/ignite.js`,
     `${APP_TEMP_PATH}/ignite/ignite.json`,
     {
@@ -160,14 +178,19 @@ async function install(context) {
   }
 
   // Cleanup
-  filesystem.remove(`${APP_PATH}/ignite.js`);
-  filesystem.remove(`${APP_PATH}/package.js`);
-  filesystem.remove(`${APP_PATH}/bob`);
-  filesystem.remove(`${APP_PATH}/package-lock.json`);
+  spinner.text = "generated files from templates";
+  spinner.start();
+  await filesystem.remove(`${APP_PATH}/ignite.js`);
+  await filesystem.remove(`${APP_PATH}/package.js`);
+  await filesystem.remove(`${APP_PATH}/bob`);
+  await filesystem.remove(`${APP_PATH}/package-lock.json`);
+  spinner.stop().succeed();
   // console.log('Reading Path Ignite: ' + `${APP_TEMP_PATH}/ignite/ignite.json`)
   // console.log(filesystem.read(`${APP_TEMP_PATH}/ignite/ignite.json`))
 
   // initialize git
+  spinner.text = "initialize git";
+  spinner.start();
   const gitExists = await filesystem.exists(".git");
   if (!gitExists && !parameters.options["skip-git"] && system.which("git")) {
     spinner.text = "setting up git";
@@ -177,6 +200,7 @@ async function install(context) {
     );
     spinner.succeed();
   }
+  spinner.stop().succeed();
 
   print.info("Woot! all done.");
   print.info("🍽 Installed!");
